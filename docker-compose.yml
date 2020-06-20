@@ -6,6 +6,7 @@ services:
     working_dir: /home/node/app
     environment:
       - NODE_ENV=production
+      - FRIEND_HOSTNAME=node2:3000
     volumes:
       - ./:/home/node/app
     ports:
@@ -17,6 +18,7 @@ services:
     working_dir: /home/node/app
     environment:
         - NODE_ENV=production
+        - FRIEND_HOSTNAME=node1:3000
     volumes:
         - ./:/home/node/app
     ports:

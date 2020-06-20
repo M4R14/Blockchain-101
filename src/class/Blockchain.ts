@@ -3,7 +3,7 @@ import fs from 'fs';
 
 export class Blockchain {
     blockchain : Block[] ;
-    difficulty : number = 2;
+    difficulty : number = 3;
 
     constructor() {
         this.blockchain = [this.startGenesisBlock()];     

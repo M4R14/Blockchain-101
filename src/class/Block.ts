@@ -2,7 +2,7 @@ import SHA256 from 'crypto-js/sha256';
 
 export class Block {
     private index : number | string ;
-    private timestamp : Date | string;
+    public timestamp : Date | string;
     private data : string | object;
     public precedingHash: string;
     public hash : string ;
@@ -19,6 +19,10 @@ export class Block {
         this.data = data;
         this.precedingHash = precedingHash;
         this.hash = this.computeHash();    
+    }
+
+    getIndex() {
+        return this.index
     }
     
     computeHash() : string {
