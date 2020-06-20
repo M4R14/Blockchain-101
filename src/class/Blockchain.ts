@@ -1,7 +1,7 @@
 import { Block } from "./Block"
-const fs = require('fs')
+import fs from 'fs';
 
-export class Blockchain{
+export class Blockchain {
     blockchain : Block[] ;
     difficulty : number = 2;
 
@@ -10,7 +10,7 @@ export class Blockchain{
     }
     
     startGenesisBlock() : Block{
-        return new Block(0, "01/01/2020", "Initial Block in the Chain", "0");
+        return new Block(0, "0", "Initial Block in the Chain", "0");
     }
     
     obtainLatestBlock() : Block{
@@ -51,8 +51,10 @@ export class Blockchain{
             precedingHash: string,
         }
         var contents =  await fs.readFileSync('blockchain.json')
-        const { difficulty, blockchain } = JSON.parse(contents);
+        console.log(contents)
+        const { difficulty, blockchain } = JSON.parse(contents.toString());
         this.difficulty = difficulty;
+
         const _blockchain = [];
         for (let index = 0; index < blockchain.length; index++) {
             const blockRaw : BlockRaw = blockchain[index];

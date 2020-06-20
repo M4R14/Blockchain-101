@@ -1,0 +1,24 @@
+version: "3"
+services:
+  node1:
+    image: "node:12"
+    user: "node"
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./:/home/node/app
+    ports:
+      - "3002:3000"
+    command: "npm run start:dev 3000"
+  node2:
+    image: "node:12"
+    user: "node"
+    working_dir: /home/node/app
+    environment:
+        - NODE_ENV=production
+    volumes:
+        - ./:/home/node/app
+    ports:
+        - "3003:3000"
+    command: "npm run start:dev 3000"

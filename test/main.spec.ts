@@ -1,7 +1,5 @@
-var fs = require('fs');
-
-import { Block } from "../Block";
-import { Blockchain } from "../Blockchain";
+import { Block } from "../src/class/Block";
+import { Blockchain } from "../src/class/Blockchain";
 
 let smashingCoin = new Blockchain();
 

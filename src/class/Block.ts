@@ -1,7 +1,7 @@
-const SHA256 = require('crypto-js/sha256');
+import SHA256 from 'crypto-js/sha256';
 
 export class Block {
-    private index : number ;
+    private index : number | string ;
     private timestamp : Date | string;
     private data : string | object;
     public precedingHash: string;
@@ -9,7 +9,7 @@ export class Block {
     public nonce : number = 0;
 
     constructor(
-        index: number,
+        index: number | string,
         timestamp: Date | string,
         data : string | object,
         precedingHash : string =" "
@@ -20,6 +20,7 @@ export class Block {
         this.precedingHash = precedingHash;
         this.hash = this.computeHash();    
     }
+    
     computeHash() : string {
         return SHA256([
             this.index,
@@ -29,6 +30,7 @@ export class Block {
             this.nonce
         ].join('|')).toString();
     }
+
     proofOfWork(difficulty : number){
         while(this.hash.substring(0, difficulty) !==Array(difficulty + 1).join("0")){
             this.nonce++;
